@@ -11,6 +11,10 @@ light with three commands.
 
 ## Quick start
 
+> **Prerequisite:** Lattice Radiant 2026.1. On **Ubuntu 26.04** it won't run out
+> of the box (it exits silently with no window) — see
+> [docs/radiant-on-ubuntu-26.04.md](docs/radiant-on-ubuntu-26.04.md) for the fix.
+
 ```bash
 scripts/build.sh            # 1. synthesize -> build/impl1/blink_impl1.bit
 sudo scripts/setup-usb.sh   # 2. one-time: give Radiant access to the USB cable
