@@ -1,0 +1,16 @@
+# -----------------------------------------------------------------------------
+# blink.pdc  --  Physical (post-synthesis) constraints for CrossLinkU-NX-33 EVN
+#
+# User LED: "LED0" (ref D5, green) -- the board's Programmable User LED.
+#   FPGA ball : G6
+#   I/O bank  : 3  (VCCIO = 1.2 V).  This bank type requires the "H" variant of
+#               the LVCMOS standard, so IO_TYPE = LVCMOS12H (plain LVCMOS12 is
+#               rejected by map DRC for this bank).
+#   Drive     : active-HIGH.  G6 -> 10k (R48) -> base of NPN Q5 (BC817); the LED
+#               is switched from a higher rail, so driving G6 HIGH lights D5.
+#   Source    : CrossLinkU-NX Evaluation Board User Guide FPGA-EB-02072-1.1,
+#               Table 7.1 "Status LED I/O Map" + Figure 5.1 power banks.
+# -----------------------------------------------------------------------------
+
+ldc_set_location -site {G6} [get_ports led]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS12H} [get_ports led]
